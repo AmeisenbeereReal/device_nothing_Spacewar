@@ -1,4 +1,5 @@
 # Copyright (C) 2022 PixysOS
+# Copyright (C) 2024 The halogenOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,17 +20,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from Spacewar device
 $(call inherit-product, device/nothing/Spacewar/device.mk)
 
-# Inherit some common halcyon stuff.
-$(call inherit-product, vendor/halcyon/config/common.mk)
-
-# Inherit my custom setup for unofficial
-#$(call inherit-product, vendor/extras/config.mk)
+# Inherit some common stuff.
+$(call inherit-product, vendor/yaap/config/common_full_phone.mk)
 
 TARGET_GAPPS_ARCH := arm64
 TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_BOARD_PLATFORM := lahaina
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := halcyon_Spacewar
+PRODUCT_NAME := yaap_Spacewar
 PRODUCT_DEVICE := Spacewar
 PRODUCT_BRAND := Nothing
 PRODUCT_MODEL := A063
@@ -42,5 +41,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
 # Override device name
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=Spacewar \
-    TARGET_PRODUCT=Spacewar
+    SystemDevice=Spacewar \
+    DeviceProduct=Spacewar

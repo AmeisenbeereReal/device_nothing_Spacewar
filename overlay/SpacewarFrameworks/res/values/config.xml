@@ -231,21 +231,6 @@
     <!-- Whether to select voice/data/sms preference without user confirmation -->
     <bool name="config_voice_data_sms_auto_fallback">true</bool>
 
-    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
-         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
-         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
-         and Strength as defined in Authenticators.java -->
-    <string-array name="config_biometric_sensors" translatable="false">
-        <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
-    </string-array>
-
-    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
-    <integer-array name="config_udfps_sensor_props" translatable="false">
-        <item>540</item>  <!-- <item>sensorLocationX</item> -->
-        <item>2170</item> <!-- <item>sensorLocationY</item> -->
-        <item>98</item>   <!-- <item>sensorRadius</item> -->
-    </integer-array>
-
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
@@ -332,14 +317,14 @@
       <item>67</item>             <!--  33 - 55 -->
       <item>78</item>             <!--  55 - 90 -->
       <item>93</item>             <!--  90 - 148 -->
-      <item>112</item>            <!--  148 - 245 -->
-      <item>137</item>            <!--  245 - 403 -->
-      <item>175</item>            <!--  403 - 665 -->
-      <item>226</item>            <!--  665 - 1097 -->
-      <item>292</item>            <!--  1097 - 1808 -->
-      <item>371</item>            <!--  1808 - 2981 -->
-      <item>459</item>            <!--  2981 - 5000 -->
-      <item>500</item>            <!--  5000 - 10000 -->
+      <item>120</item>            <!--  148 - 245 -->
+      <item>142</item>            <!--  245 - 403 -->
+      <item>180</item>            <!--  403 - 665 -->
+      <item>240</item>            <!--  665 - 1097 -->
+      <item>300</item>            <!--  1097 - 1808 -->
+      <item>392</item>            <!--  1808 - 2981 -->
+      <item>489</item>            <!--  2981 - 5000 -->
+      <item>520</item>            <!--  5000 - 10000 -->
       <item>582.36131</item>      <!--  10000+ -->
     </array>
 
@@ -725,7 +710,7 @@
     </string-array>
 
     <!-- Colon separated list of package names that should be granted Notification Listener access -->
-    <string name="config_defaultListenerAccessPackages" translatable="false">com.pixys.glyph</string>
+    <string name="config_defaultListenerAccessPackages" translatable="false">co.aospa.glyph</string>
 
     <!-- If an any motion sensor is not available, prefer the wrist tilt detector over the
      SMD. -->
@@ -736,5 +721,13 @@
     <bool name="config_spatial_audio_head_tracking_enabled_default">true</bool>
 
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
-    <bool name="config_zramWriteback">true</bool>
+    <bool name="config_zramWriteback">false</bool>
+
+    <string name="config_stockFingerprint">Nothing/Spacewar/Spacewar:12/SKQ1.211230.001/1666412462:user/release-keys</string>
+
+    <!-- Device model (Build.MODEL) to spoof for netflix, if not empty -->
+    <string name="config_netflixSpoofModel" translatable="false">M2101K9G</string>
+
+    <bool name="config_supportsMicToggle">true</bool>
+    <bool name="config_supportsCamToggle">true</bool>
 </resources>

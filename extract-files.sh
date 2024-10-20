@@ -65,6 +65,9 @@ function blob_fixup() {
         vendor/lib64/hw/fingerprint.lahaina.so)
             "${PATCHELF}" --set-soname "fingerprint.lahaina.so" "${2}"
             ;;
+        vendor/etc/media_codecs.xml|vendor/etc/media_codecs_yupik_v0.xml|vendor/etc/media_codecs_yupik_v1.xml)
+            sed -Ei "/media_codecs_(google_audio|google_c2|google_telephony|vendor_audio)/d" "${2}"
+            ;;
         vendor/lib64/libgf_hal.so)
             sed -i "s|ro.boot.flash.locked|ro.bootloader.locked|g" "${2}"
             ;;
@@ -73,6 +76,10 @@ function blob_fixup() {
             ;;
 	vendor/etc/media_codecs.xml|vendor/etc/media_codecs_lahaina.xml|vendor/etc/media_codecs_lahaina_vendor.xml|vendor/etc/media_codecs_yupik_v1.xml)
             sed -Ei "/media_codecs_(google_audio|google_telephony|vendor_audio)/d" "${2}"
+	    ;;
+        vendor/lib64/mediadrm/libwvdrmengine.so|vendor/lib64/libwvhidl.so)
+            [ "$2" = "" ] && return 0
+            grep -q "libcrypto-v33.so" "${2}" || "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "$2"
             ;;
     esac
 }
